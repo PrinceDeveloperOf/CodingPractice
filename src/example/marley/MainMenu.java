@@ -2,6 +2,8 @@ package example.marley;
 import java.util.Scanner;
 import example.marley.ProjectEuler_1;
 import example.marley.ProjectEuler_2;
+//import example.marley.ProjectEuler_4;
+
 public class MainMenu {
 	public static void main(String[] args)
 	{
@@ -10,7 +12,7 @@ public class MainMenu {
 		
 		while(true){
 			
-			System.out.println("Type 'Euler_1' to use the solution to Euler_1\nType 'Euler_2' to use the solution to Euler_2\nType 'quit' to quit");
+			System.out.println("Type 'Euler_1' to use the solution to Euler_1\nType 'Euler_2' to use the solution to Euler_2\n Type'Euler_4' to use the solution to Euler_4\nType 'quit' to quit");
 			input = scanner.nextLine();
 			if(input.equals("Euler_1"))
 			{
@@ -37,7 +39,7 @@ public class MainMenu {
 					System.out.println("The answer is " + answer);
 				}
 			}
-			if(input.equals("Euler_2"))
+			else if(input.equals("Euler_2"))
 			{
 				System.out.println("Enter an upper limit");
 				String upperLimit = scanner.nextLine();
@@ -53,8 +55,13 @@ public class MainMenu {
 				int result = operation.sumEvenFibonachi(Integer.parseInt(upperLimit));
 				System.out.println("Here is the result: " + result);
 			}
-			
-			if(input.equalsIgnoreCase("quit"))
+			else if(input.equals("Euler_4"))
+			{
+				ProjectEuler_4 operation = new ProjectEuler_4();
+				System.out.println("The result is: " + operation.findPalindrome());
+				
+			}
+			else if(input.equalsIgnoreCase("quit"))
 			{
 				break;
 			}

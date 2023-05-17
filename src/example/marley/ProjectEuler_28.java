@@ -4,11 +4,11 @@ public class ProjectEuler_28 {
 	public int addDiagonalsOfASpiral(int spiralNum)
 	{
 		int sum = 1;
-		for(int i = 1, level = 1; i < spiralNum; ++level)
+		for(int i = 1, level = 1; i < spiralNum; level = level + 2)
 		{
 			for(int j = 0; j < 4; ++j)
 			{
-				i = i + 2 * level; 
+				i = i + level; 
 				if(i > spiralNum)
 				{
 					break;

@@ -1,5 +1,7 @@
 package example.marley;
 import java.util.ArrayList;
+import javax.swing.*;
+
 import java.util.Arrays;
 import java.util.Scanner;
 import example.marley.ProjectEuler_1;
@@ -8,8 +10,28 @@ import example.marley.ProjectEuler_2;
 import example.marley.ProjectEuler_11;
 
 public class MainMenu {
+	private static JFrame frame;
 	public static void main(String[] args)
 	{
+		SwingUtilities.invokeLater(()->{
+			frame = new JFrame("Swing App");
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			
+			JLabel label = new JLabel("Hello, Swing!");
+			
+			String[] operations = {"Euler_1", "Euler_2", "Euler_4", "Euler_11", "Euler_19", "Euler_28"};
+			JComboBox<String> comboBox = new JComboBox<>(operations);
+			//TODO Add the proper function to happen when the combo box chooses something a format the window
+			
+			frame.getContentPane().add(label);
+			
+			frame.pack();
+			frame.setVisible(true);
+			
+			
+			
+			
+		});
 		Scanner scanner = new Scanner(System.in);
 		String input = "";
 		

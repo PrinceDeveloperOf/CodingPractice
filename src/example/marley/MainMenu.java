@@ -1,6 +1,12 @@
 package example.marley;
+import java.awt.*;
+import java.awt.GridBagConstraints;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import javax.swing.*;
+import java.util.HashMap;
+import java.util.Map;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -11,25 +17,71 @@ import example.marley.ProjectEuler_11;
 
 public class MainMenu {
 	private static JFrame frame;
+	private static Map<String, Solution> operationsMap;
 	public static void main(String[] args)
 	{
+		operationsMap = new HashMap<>();
+		operationsMap.put("Euler_1", new ProjectEuler_1());
 		SwingUtilities.invokeLater(()->{
 			frame = new JFrame("Swing App");
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			
-			JLabel label = new JLabel("Hello, Swing!");
+			String[] operationNames = {"Euler_1", "Euler_2", "Euler_4", "Euler_11", "Euler_19", "Euler_28"};
+			JComboBox<String> comboBox = new JComboBox<>(operationNames);
+			GridBagConstraints gbc = new GridBagConstraints();
 			
-			String[] operations = {"Euler_1", "Euler_2", "Euler_4", "Euler_11", "Euler_19", "Euler_28"};
-			JComboBox<String> comboBox = new JComboBox<>(operations);
-			//TODO Add the proper function to happen when the combo box chooses something a format the window
+			JPanel parentContainer = new JPanel();
+			parentContainer.setLayout(new GridBagLayout());
+			parentContainer.setName("Parent Name");
+
+			JPanel childContainer = new JPanel();
+			childContainer.setLayout(new GridBagLayout());
+			childContainer.setName("Top Bar");
 			
-			frame.getContentPane().add(label);
+			JPanel operationContainer = new JPanel();
+			operationContainer.setName("Operation Content");
+			operationContainer.setLayout(new GridBagLayout());
+					
+			gbc.gridx = 0;
+			gbc.gridy = 0;
+			gbc.fill = GridBagConstraints.HORIZONTAL;
+			gbc.anchor = GridBagConstraints.NORTH;
+			gbc.weightx = 1.0;
+			gbc.weighty = 0.0;
+			
+			childContainer.add(comboBox, gbc);
+			parentContainer.add(childContainer, gbc);
+			gbc.gridx = 0;
+			gbc.gridy = 1;
+			gbc.fill = GridBagConstraints.BOTH;
+			gbc.anchor = GridBagConstraints.CENTER;
+			gbc.weightx = 1.0;
+			gbc.weighty = 1.0;
+				
+			
+			parentContainer.add(operationContainer, gbc);
+			
+			
+			comboBox.addItemListener(new ItemListener()
+					{
+						@Override
+						public void itemStateChanged(ItemEvent e) 
+						{
+							if(e.getStateChange() == ItemEvent.SELECTED)
+							{
+								String selectedOption = (String) comboBox.getSelectedItem();
+								if(operationsMap.get(selectedOption) != null)
+								{
+									operationsMap.get(selectedOption).display(frame);;
+								}
+							}
+						}
+					});
+			
+			frame.setContentPane(parentContainer);
+			
 			frame.pack();
 			frame.setVisible(true);
-			
-			
-			
-			
 		});
 		Scanner scanner = new Scanner(System.in);
 		String input = "";

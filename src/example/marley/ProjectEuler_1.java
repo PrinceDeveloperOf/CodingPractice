@@ -27,20 +27,46 @@ public class ProjectEuler_1 implements Solution{
 	}
 
 	@Override
-	public void display(JFrame inFrame) {
+	public void display(JFrame inFrame)
+	{
 		SwingUtilities.invokeLater(() ->{
-			inFrame.getContentPane().removeAll();
+			for(Component component : inFrame.getContentPane().getComponents())
+			{
+				if(component.getName().equals("Operation Content"))
+				{
+					Container operationContainer = (Container) component;
+					operationContainer.removeAll();
+					
+					GridBagConstraints gbc = new GridBagConstraints();
+					gbc.gridx = 0;
+					gbc.gridy = 0;
+					gbc.weightx = 0.0;
+					gbc.weighty = 1.0;
+					JLabel multipleLabel = new JLabel("Multiple");
+					JTextField multipleInput = new JTextField("Enter Multiple");
+					JLabel upperLimitLabel = new JLabel("Upper Limit");
+					JTextField upperLimitInput = new JTextField("Enter upperlimit");
+					
+					operationContainer.add(multipleLabel, gbc);
+					gbc.gridy = 1;
+					operationContainer.add(upperLimitLabel, gbc);
+					
+					gbc.gridy = 0;
+					gbc.weightx = 1.0;
+					gbc.gridx = 1;
+					gbc.fill = GridBagConstraints.HORIZONTAL;
+					operationContainer.add(multipleInput, gbc);
+					gbc.gridy = 1;
+					operationContainer.add(upperLimitInput,gbc);
+					
+					inFrame.revalidate();
+					inFrame.repaint();
+					inFrame.pack();
+					break;
+				}
+			}
 			
 			JPanel panel = new JPanel(new GridBagLayout());
-			GridBagConstraints gbc = new GridBagConstraints();
-			
-			
-			
-			JButton button = new JButton("");
-
-			
-			inFrame.revalidate();
-			inFrame.repaint();
 		});
 		
 	}

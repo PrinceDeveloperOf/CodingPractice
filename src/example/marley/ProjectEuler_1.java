@@ -1,7 +1,10 @@
 package example.marley;
 
+import javax.swing.*;
+import java.awt.*;
 
-public class ProjectEuler_1 {
+public class ProjectEuler_1 implements Solution{
+
 	public int addMultiples(int multiple, int upperLimit)
 	{
 		if(multiple < 0)
@@ -21,5 +24,24 @@ public class ProjectEuler_1 {
 		}
 		
 		return sum;
+	}
+
+	@Override
+	public void display(JFrame inFrame) {
+		SwingUtilities.invokeLater(() ->{
+			inFrame.getContentPane().removeAll();
+			
+			JPanel panel = new JPanel(new GridBagLayout());
+			GridBagConstraints gbc = new GridBagConstraints();
+			
+			
+			
+			JButton button = new JButton("");
+
+			
+			inFrame.revalidate();
+			inFrame.repaint();
+		});
+		
 	}
 }

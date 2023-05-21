@@ -24,7 +24,6 @@ public class MainMenu {
 			//TODO Add the proper function to happen when the combo box chooses something a format the window
 			
 			frame.getContentPane().add(label);
-			
 			frame.pack();
 			frame.setVisible(true);
 			

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Consumer;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -17,11 +18,12 @@ import example.marley.ProjectEuler_11;
 
 public class MainMenu {
 	private static JFrame frame;
-	private static Map<String, Solution> operationsMap;
+	private static Map<String, Consumer<JFrame>> operationsMap;
 	public static void main(String[] args)
 	{
 		operationsMap = new HashMap<>();
-		operationsMap.put("Euler_1", new ProjectEuler_1());
+		operationsMap.put("Euler_1", ProjectEuler_1::display);
+
 		SwingUtilities.invokeLater(()->{
 			frame = new JFrame("Swing App");
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -72,7 +74,7 @@ public class MainMenu {
 								String selectedOption = (String) comboBox.getSelectedItem();
 								if(operationsMap.get(selectedOption) != null)
 								{
-									operationsMap.get(selectedOption).display(frame);;
+									operationsMap.get(selectedOption).accept(frame);
 								}
 							}
 						}

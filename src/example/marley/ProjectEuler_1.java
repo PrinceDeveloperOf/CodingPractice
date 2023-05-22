@@ -1,11 +1,15 @@
 package example.marley;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
+import java.lang.reflect.InvocationTargetException;
 
-public class ProjectEuler_1 implements Solution{
+public class ProjectEuler_1{
+	static int[] multipleNum;
 
-	public int addMultiples(int multiple, int upperLimit)
+	public static int addMultiples(int multiple, int upperLimit)
 	{
 		if(multiple < 0)
 		{
@@ -26,8 +30,7 @@ public class ProjectEuler_1 implements Solution{
 		return sum;
 	}
 
-	@Override
-	public void display(JFrame inFrame)
+	public static void display(JFrame inFrame)
 	{
 		SwingUtilities.invokeLater(() ->{
 			for(Component component : inFrame.getContentPane().getComponents())
@@ -43,9 +46,11 @@ public class ProjectEuler_1 implements Solution{
 					gbc.weightx = 0.0;
 					gbc.weighty = 1.0;
 					JLabel multipleLabel = new JLabel("Multiple");
-					JTextField multipleInput = new JTextField("Enter Multiple");
+					JTextField multipleInput = new JTextField("");
+					multipleNum = SolutionHelpers.turnTextFieldIntoNumericOnlyTextField(multipleInput);
 					JLabel upperLimitLabel = new JLabel("Upper Limit");
-					JTextField upperLimitInput = new JTextField("Enter upperlimit");
+					JTextField upperLimitInput = new JTextField("");
+
 					
 					operationContainer.add(multipleLabel, gbc);
 					gbc.gridy = 1;

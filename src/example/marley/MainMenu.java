@@ -109,13 +109,7 @@ public class MainMenu {
 					System.out.println("The upperLimit and multiple must be a number");
 					continue;
 				}
-				ProjectEuler_1 operation = new ProjectEuler_1();
 				
-				int answer = operation.addMultiples(Integer.parseInt(multiple), Integer.parseInt(upperLimit));
-				if (answer != 0)
-				{
-					System.out.println("The answer is " + answer);
-				}
 			}
 			else if(input.equals("Euler_2"))
 			{

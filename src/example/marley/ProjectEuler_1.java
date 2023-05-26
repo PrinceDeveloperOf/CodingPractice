@@ -1,19 +1,25 @@
 package example.marley;
 
 import javax.swing.*;
+
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
 
+import example.marley.SolutionHelpers;
+
 public class ProjectEuler_1{
-	static int[] multipleNum;
-	static int[] upperLimitNum;
+	static JTextField multipleInput;
+	static JTextField upperLimitInput;
 	static JLabel displayLabel;
 
 	public static void addMultiples()
 	{
-		if(multipleNum.length == 0 || upperLimitNum.length == 0)
+		int[] multipleNum = new int[] {};
+		int[] upperLimitNum = new int[] {};
+
+		if(!SolutionHelpers.checkIfTextFieldIsAllDigits(upperLimitInput, upperLimitNum ) || !SolutionHelpers.checkIfTextFieldIsAllDigits(multipleInput, multipleNum ) )
 		{
 			return;
 		}
@@ -22,10 +28,10 @@ public class ProjectEuler_1{
 		if(multiple < 0)
 		{
 			
-		SwingUtilities.invokeLater(() ->{
-			displayLabel.setText("Multiple must be bigger than 0");
-		});
-			return;
+			SwingUtilities.invokeLater(() ->{
+				displayLabel.setText("Multiple must be bigger than 0");
+			});
+				return;
 		}
 		if(multiple > upperLimit)
 		{
@@ -43,16 +49,11 @@ public class ProjectEuler_1{
 		SwingUtilities.invokeLater(() ->{
 			displayLabel.setText(sumString);
 		});
-
-		
-		
 		return;
 	}
 
 	public static void display(JFrame inFrame)
 	{
-		multipleNum = new int[0];
-		upperLimitNum = new int[0];
 		SwingUtilities.invokeLater(() ->{
 			for(Component component : inFrame.getContentPane().getComponents())
 			{
@@ -62,12 +63,10 @@ public class ProjectEuler_1{
 					operationContainer.removeAll();
 					
 					JLabel multipleLabel = new JLabel("Multiple");
-					JTextField multipleInput = new JTextField("");
+					multipleInput = new JTextField("");
 					Runnable addMultiplesRunnable = ProjectEuler_1::addMultiples;
-					multipleNum = SolutionHelpers.turnTextFieldIntoNumericOnlyTextField(multipleInput, addMultiplesRunnable);
 					JLabel upperLimitLabel = new JLabel("Upper Limit");
-					JTextField upperLimitInput = new JTextField("");
-					upperLimitNum = SolutionHelpers.turnTextFieldIntoNumericOnlyTextField(upperLimitInput, addMultiplesRunnable);
+					upperLimitInput = new JTextField("");
 					displayLabel = new JLabel("Waiting for input");
 
 					GridBagConstraints gbc = new GridBagConstraints();

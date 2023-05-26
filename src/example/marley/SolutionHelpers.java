@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.event.*;
 
 public class SolutionHelpers {
-	public static int[] turnTextFieldIntoNumericOnlyTextField(JTextField inTextField, Runnable action)
+	public static void turnTextFieldIntoNumericOnlyTextField(JTextField inTextField, Runnable action)
 	{
 		int[] num = new int[0];
 		inTextField.getDocument().addDocumentListener(new DocumentListener()
@@ -36,8 +36,6 @@ public class SolutionHelpers {
 					
 				}
 			});
-		return num;	
-
 	}
 	public static Boolean checkIfTextFieldIsAllDigits(JTextField inTextField, int[] digits)
 	{

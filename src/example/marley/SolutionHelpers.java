@@ -11,7 +11,7 @@ public class SolutionHelpers {
 			{
 				@Override
 				public void insertUpdate(DocumentEvent e) {
-					if(SolutionHelpers.checkIfTextFieldIsAllDigits(inTextField, num))
+					if(SolutionHelpers.checkIfTextFieldIsAllDigits(inTextField))
 					{
 						action.run();
 						return;
@@ -37,11 +37,12 @@ public class SolutionHelpers {
 				}
 			});
 	}
-	public static Boolean checkIfTextFieldIsAllDigits(JTextField inTextField, int[] digits)
+	public static Boolean checkIfTextFieldIsAllDigits(JTextField inTextField)
 	{
 		String text = inTextField.getText();
 		try {
-			digits = new int[] {Integer.parseInt(text)};
+			int digits = Integer.parseInt(text);
+			digits = Integer.parseInt(text);
 			return true;
 		}catch(NumberFormatException e){
 			return false;

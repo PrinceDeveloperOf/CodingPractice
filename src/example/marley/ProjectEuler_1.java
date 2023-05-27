@@ -16,18 +16,20 @@ public class ProjectEuler_1{
 
 	public static void addMultiples()
 	{
-		int[] multipleNum = new int[] {};
-		int[] upperLimitNum = new int[] {};
+		int[] multipleNum = new int[] {0};
+		int[] upperLimitNum = new int[] {0};
+		
+		Boolean isUpperLimitAllDigits = SolutionHelpers.checkIfTextFieldIsAllDigits(upperLimitInput);
+		Boolean isMultipleAllDigits = SolutionHelpers.checkIfTextFieldIsAllDigits(multipleInput);
 
-		if(!SolutionHelpers.checkIfTextFieldIsAllDigits(upperLimitInput, upperLimitNum ) || !SolutionHelpers.checkIfTextFieldIsAllDigits(multipleInput, multipleNum ) )
+		if(!isUpperLimitAllDigits || !isMultipleAllDigits )
 		{
 			return;
 		}
-		int multiple = multipleNum[0];
-		int upperLimit = upperLimitNum[0];
+		int multiple = Integer.parseInt(multipleInput.getText());
+		int upperLimit = Integer.parseInt(upperLimitInput.getText());
 		if(multiple < 0)
 		{
-			
 			SwingUtilities.invokeLater(() ->{
 				displayLabel.setText("Multiple must be bigger than 0");
 			});
@@ -66,7 +68,9 @@ public class ProjectEuler_1{
 					multipleInput = new JTextField("");
 					Runnable addMultiplesRunnable = ProjectEuler_1::addMultiples;
 					JLabel upperLimitLabel = new JLabel("Upper Limit");
+					SolutionHelpers.turnTextFieldIntoNumericOnlyTextField(multipleInput, addMultiplesRunnable);
 					upperLimitInput = new JTextField("");
+					SolutionHelpers.turnTextFieldIntoNumericOnlyTextField(upperLimitInput, addMultiplesRunnable);
 					displayLabel = new JLabel("Waiting for input");
 
 					GridBagConstraints gbc = new GridBagConstraints();

@@ -2,12 +2,8 @@ package example.marley;
 
 import javax.swing.*;
 
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import java.awt.*;
-import java.lang.reflect.InvocationTargetException;
 
-import example.marley.SolutionHelpers;
 
 public class ProjectEuler_1{
 	static JTextField multipleInput;
@@ -16,9 +12,6 @@ public class ProjectEuler_1{
 
 	public static void addMultiples()
 	{
-		int[] multipleNum = new int[] {0};
-		int[] upperLimitNum = new int[] {0};
-		
 		Boolean isUpperLimitAllDigits = SolutionHelpers.checkIfTextFieldIsAllDigits(upperLimitInput);
 		Boolean isMultipleAllDigits = SolutionHelpers.checkIfTextFieldIsAllDigits(multipleInput);
 
@@ -95,7 +88,6 @@ public class ProjectEuler_1{
 					operationContainer.add(multipleInput, gbc);
 					gbc.gridy = 1;
 					operationContainer.add(upperLimitInput,gbc);
-
 					
 					inFrame.revalidate();
 					inFrame.repaint();

@@ -23,6 +23,7 @@ public class MainMenu {
 	{
 		operationsMap = new HashMap<>();
 		operationsMap.put("Euler_1", ProjectEuler_1::display);
+		operationsMap.put("Euler_2", ProjectEuler_2::display);
 
 		SwingUtilities.invokeLater(()->{
 			frame = new JFrame("Swing App");
@@ -89,29 +90,9 @@ public class MainMenu {
 		String input = "";
 		
 		while(true){
-			
-			System.out.println("Type 'Euler_1' to use the solution to Euler_1\nType 'Euler_2' to use the solution to Euler_2\n Type'Euler_4' to use the solution to Euler_4\nType 'quit' to quit");
+			System.out.println("Type 'Euler_2' to use the solution to Euler_2\n Type'Euler_4' to use the solution to Euler_4\nType 'quit' to quit");
 			input = scanner.nextLine();
-			if(input.equals("Euler_1"))
-			{
-				String multiple = "";
-				String upperLimit = "";
-				System.out.println("Enter the multiple you want to count");
-				multiple = scanner.nextLine();
-				System.out.println("Enter the upper limit");
-				upperLimit = scanner.nextLine();
-				try
-				{
-					Integer.parseInt(upperLimit);
-					Integer.parseInt(multiple);
-				} catch (NumberFormatException e)
-				{
-					System.out.println("The upperLimit and multiple must be a number");
-					continue;
-				}
-				
-			}
-			else if(input.equals("Euler_2"))
+			if(input.equals("Euler_2"))
 			{
 				System.out.println("Enter an upper limit");
 				String upperLimit = scanner.nextLine();

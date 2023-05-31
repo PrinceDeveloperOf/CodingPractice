@@ -105,8 +105,6 @@ public class MainMenu {
 					continue;
 				}
 				ProjectEuler_2 operation = new ProjectEuler_2();
-				int result = operation.sumEvenFibonachi(Integer.parseInt(upperLimit));
-				System.out.println("Here is the result: " + result);
 			}
 			else if(input.equals("Euler_4"))
 			{

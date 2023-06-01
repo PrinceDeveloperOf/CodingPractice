@@ -90,23 +90,9 @@ public class MainMenu {
 		String input = "";
 		
 		while(true){
-			System.out.println("Type 'Euler_2' to use the solution to Euler_2\n Type'Euler_4' to use the solution to Euler_4\nType 'quit' to quit");
+			System.out.println("n Type'Euler_4' to use the solution to Euler_4\nType 'quit' to quit");
 			input = scanner.nextLine();
-			if(input.equals("Euler_2"))
-			{
-				System.out.println("Enter an upper limit");
-				String upperLimit = scanner.nextLine();
-				try
-				{
-					Integer.parseInt(upperLimit);
-				} catch (NumberFormatException e)
-				{
-					System.out.println("The upperLimit must be a number");
-					continue;
-				}
-				ProjectEuler_2 operation = new ProjectEuler_2();
-			}
-			else if(input.equals("Euler_4"))
+			if(input.equals("Euler_4"))
 			{
 				ProjectEuler_4 operation = new ProjectEuler_4();
 				System.out.println("The result is: " + operation.findPalindrome());

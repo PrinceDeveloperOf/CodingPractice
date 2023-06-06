@@ -81,6 +81,7 @@ public class MainMenu {
 						}
 					});
 			
+			operationsMap.get("Euler_1").accept(frame);
 			frame.setContentPane(parentContainer);
 			
 			frame.pack();
